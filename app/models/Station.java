@@ -18,7 +18,7 @@ public class Station extends Model {
     public double longitude;
 
     public Station(String title, double latitude, double longitude) {
-        this.title = title;
+        this.title = convertToTitleCaseIteratingChars(title);
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -163,6 +163,8 @@ public class Station extends Model {
         return station;
     }
 
+    //converts the inputted station title to be in sentence form
+    //keeping the array in alphabetical order
     public static String convertToTitleCaseIteratingChars(String text) {
         if (text == null || text.isEmpty()) {
             return text;
@@ -191,6 +193,9 @@ public class Station extends Model {
     public String getStationTitle() {
         return convertToTitleCaseIteratingChars(title);
     }
+
+    //getters for latest reading partial
+    //which return all fields of the latest reading from array of readings
 
     public int latestCode() {
         return latestReading().getReadingCode();

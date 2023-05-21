@@ -17,6 +17,7 @@ public class Reading extends Model {
     public int pressure;
     public String dateTime;
 
+    //constructor
     public Reading(int code, double temperature, double windSpeed, double windDirection, int pressure, String dateTime) {
         this.code = code;
         this.temperature = temperature;
@@ -26,11 +27,6 @@ public class Reading extends Model {
         this.dateTime = FORMATTER.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
     }
 
-    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); //Create DateTimeFormatter
-
-    public String getDateTime() {
-        return this.dateTime = FORMATTER.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
-    }
     //-------
     //getters
     //-------
@@ -68,6 +64,17 @@ public class Reading extends Model {
 
     public int getBeaufort() {
         return beaufort();
+    }
+
+
+    //methods
+
+    //format method date and time to display properly
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); //Create DateTimeFormatter
+
+    //getter for date and time which uses formatter method to display accurately
+    public String getDateTime() {
+        return this.dateTime = FORMATTER.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
     }
 
     public double fahrenheit() {
