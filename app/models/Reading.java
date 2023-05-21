@@ -9,8 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Entity
-public class Reading extends Model
-{
+public class Reading extends Model {
     public int code;
     public double temperature;
     public double windSpeed;
@@ -18,8 +17,7 @@ public class Reading extends Model
     public int pressure;
     public String dateTime;
 
-    public Reading(int code, double temperature, double windSpeed, double windDirection, int pressure, String dateTime)
-    {
+    public Reading(int code, double temperature, double windSpeed, double windDirection, int pressure, String dateTime) {
         this.code = code;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
@@ -29,75 +27,77 @@ public class Reading extends Model
     }
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"); //Create DateTimeFormatter
-    public String getDateTime()
-    {
-       return this.dateTime = FORMATTER.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
+
+    public String getDateTime() {
+        return this.dateTime = FORMATTER.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
     }
     //-------
     //getters
     //-------
+
     /**
      * Returns the Reading fields
      */
-    public int getReading () { return 0; }
-    public int getReadingCode ()
-    {
+    public int getReading() {
+        return 0;
+    }
+
+    public int getReadingCode() {
         return code;
     }
-    public double getReadingTemperature()
-    {
+
+    public double getReadingTemperature() {
         return temperature;
     }
-    public double getReadingWindSpeed()
-    {
+
+    public double getReadingWindSpeed() {
         return windSpeed;
     }
-    public double getReadingWindDirection()
-    {
+
+    public double getReadingWindDirection() {
         return windDirection;
     }
-    public int getReadingPressure()
-    {
+
+    public int getReadingPressure() {
         return pressure;
     }
-    public double getReadingFahrenheit()
-    {
+
+    public double getReadingFahrenheit() {
         return fahrenheit();
     }
-    public int getBeaufort()
-    {
+
+    public int getBeaufort() {
         return beaufort();
     }
-    public double fahrenheit()
-    {
+
+    public double fahrenheit() {
         return Conversions.convertToFahrenheit(this.temperature);
     }
-    public String getWeatherCode()
-    {
+
+    public String getWeatherCode() {
         return Conversions.convertWeatherCode(this.code);
     }
-    public int beaufort()
-    {
+
+    public int beaufort() {
         return Conversions.convertToBeaufort(this.windSpeed);
     }
-    public String getWindDirectionCompass()
-    {
+
+    public String getWindDirectionCompass() {
         return Conversions.windDirectionCompass(this.windDirection);
     }
-    public double getWindChill()
-    {
+
+    public double getWindChill() {
         return Conversions.convertToWindChill(this.temperature, this.windSpeed);
     }
+
     //-------
     //setters
     //-------
-    public void setWindDirection(double windDirection)
-    {
+    public void setWindDirection(double windDirection) {
         //The windDirection must be between 0 and 360 degrees (inclusive)
-        if ((windDirection >= 0) && (windDirection <= 360)){
+        if ((windDirection >= 0) && (windDirection <= 360)) {
             this.windDirection = windDirection;
-        }
-        else {
+        } else {
             this.windDirection = 0;
         }
     }

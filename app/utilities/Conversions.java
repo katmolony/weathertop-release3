@@ -2,32 +2,33 @@ package utilities;
 
 public class Conversions {
 
-    public Conversions () {}
+    public Conversions() {
+    }
 
-    public static String convertWeatherCode(int code){
-        if (code <=100) {
+    public static String convertWeatherCode(int code) {
+        if (code <= 100) {
             return "Clear";
-        } else if (code<=200) {
+        } else if (code <= 200) {
             return "Partial clouds";
-        }else if (code<=300) {
+        } else if (code <= 300) {
             return "Cloudy";
-        }else if (code<=400) {
+        } else if (code <= 400) {
             return "Light Showers";
-        }else if (code<=500) {
+        } else if (code <= 500) {
             return "Heavy Showers";
-        }else if (code<=600) {
+        } else if (code <= 600) {
             return "Rain";
-        }else if (code<=700) {
+        } else if (code <= 700) {
             return "Snow";
-        }else if (code<=800) {
+        } else if (code <= 800) {
             return "Thunder";
-        } else
-        {
+        } else {
             return "No Code";
         }
     }
+
     public static double convertToFahrenheit(double temperature) {
-        double fahrenheit = temperature * 9/5 +32;
+        double fahrenheit = temperature * 9 / 5 + 32;
         return fahrenheit;
     }
 
@@ -61,8 +62,7 @@ public class Conversions {
         }
     }
 
-    public static String windDirectionCompass (double windDirection)
-    {
+    public static String windDirectionCompass(double windDirection) {
         if ((windDirection <= 11.25) || (windDirection > 348.75)) {
             return "N";
         } else if ((windDirection > 11.25) && (windDirection < 33.75)) {
@@ -99,12 +99,13 @@ public class Conversions {
             return "Unknown";
         }
     }
-    public static double convertToWindChill (double temperature, double windSpeed)
-    {
-        double windChill = 13.12 + 0.6215 * temperature - 11.37*Math.pow(windSpeed,0.16) + 0.3965*temperature*Math.pow(windSpeed,0.16);
+
+    public static double convertToWindChill(double temperature, double windSpeed) {
+        double windChill = 13.12 + 0.6215 * temperature - 11.37 * Math.pow(windSpeed, 0.16) + 0.3965 * temperature * Math.pow(windSpeed, 0.16);
         return toTwoDecimalPlaces(windChill);
     }
-    private static double toTwoDecimalPlaces(double num){
-        return (int) (num *100 ) /100.0;
+
+    private static double toTwoDecimalPlaces(double num) {
+        return (int) (num * 100) / 100.0;
     }
 }

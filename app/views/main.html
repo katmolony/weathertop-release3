@@ -1,62 +1,69 @@
 <style>
-.html{
-  background-color: #0D1A26;
-}
-.hero {
-  background-color:#0D1A26;
-}
-p.title{
-  color: #F24C27;
-  text-align: center;
-  font-family: intrebol.ttf,"Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: capitalize;
-  letter-spacing: 10px;
-  word-spacing: 10px;
-}
-section.box{
-  background-color: #3C5973;
-}
-div.box{
-  background-color: #0D1A26;
-  text-align: center;
-}
-footer.footer{
-  background-color: #3C5973;
-  color: #0D1A26;
-  text-align: center;
-  height: 10%;
-}
-p.footer{
-  background-color: #3C5973;
-  color: #0D1A26;
-  height: 10%;
-}
-.content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
-  color: white;
-}
+    .html {
+        background-color: #0D1A26;
+    }
+
+    .hero {
+        background-color: #0D1A26;
+    }
+
+    p.title {
+        color: #F24C27;
+        text-align: center;
+        font-family: intrebol . ttf, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: capitalize;
+        letter-spacing: 10px;
+        word-spacing: 10px;
+    }
+
+    section.box {
+        background-color: #3C5973;
+    }
+
+    div.box {
+        background-color: #0D1A26;
+        text-align: center;
+    }
+
+    footer.footer {
+        background-color: #3C5973;
+        color: #0D1A26;
+        text-align: center;
+        height: 10%;
+    }
+
+    p.footer {
+        background-color: #3C5973;
+        color: #0D1A26;
+        height: 10%;
+    }
+
+    .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+        color: white;
+    }
 </style>
 
 <!DOCTYPE html>
 <html class="html">
-  <head>
+<head>
     <title>#{get 'title' /}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/dd084b05a9.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-  </head>
-  <body class="container">
-    <div class="hero is-small">
-      <div class="hero-body">
+</head>
+<body class="container">
+<div class="hero is-small">
+    <div class="hero-body">
         <p class="title">
-          WEATHER TOP APP
+            WEATHER TOP APP
         </p>
-      </div>
     </div>
-    <section class="box">
-      #{doLayout /}
-    </section>
-    <footer class="footer box">
-      Copyright Weather Top Demo 2023
-    </footer>
-  </body>
+</div>
+<section class="box">
+    #{doLayout /}
+</section>
+<footer class="footer box">
+    Copyright Weather Top Demo 2023
+</footer>
+</body>
 </html>

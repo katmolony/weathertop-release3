@@ -1,32 +1,33 @@
 <style>
-    nav.navbar{
+    nav.navbar {
         background-color: #3C5973;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    a.navbar-item{
+
+    .navbar-item {
         color: #F24C27;
         text-align: center;
         font-weight: bold;
-        font-family: intrebol.ttf,"Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: intrebol . ttf, "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: capitalize;
         letter-spacing: 0.5px;
     }
 </style>
 <nav class="navbar is-inverted">
-  <div class="navbar-brand">
-    <a id="start" class="navbar-item" href="/start"> WeatherTop Services Inc.</a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-end">
-<!--      <a id="admin" class="navbar-item" href="/admin">Admin </a>-->
-        <a id="dashboard" class="navbar-item" href="/dashboard">Stations</a>
-        <a id="about" class="navbar-item" href="/about">About </a>
-        <a id="editProfile" class="navbar-item" href="/edit">Edit Profile </a>
-        <a id="logout" class="navbar-item" href="/logout">Logout </a>
+    <div class="navbar-brand">
+        <p id="start" class="navbar-item"> WeatherTop Services Inc.</p>
     </div>
-  </div>
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <!--      <a id="admin" class="navbar-item" href="/admin">Admin </a>-->
+            <a id="dashboard" class="navbar-item" href="/dashboard">Stations</a>
+            <a id="about" class="navbar-item" href="/about">About </a>
+            <a id="editProfile" class="navbar-item" href="/edit">Edit Profile </a>
+            <a id="logout" class="navbar-item" href="/logout">Logout </a>
+        </div>
+    </div>
 </nav>
 
 <script>
-  $("#${_id}").addClass("has-background-white has-text-black");
+    $("#${_id}").addClass("has-background-white has-text-black");
 </script>

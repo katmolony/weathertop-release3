@@ -12,14 +12,12 @@ import play.Logger;
 import play.db.jpa.Model;
 
 @Entity
-public class Station extends Model
-{
+public class Station extends Model {
     public String title;
     public double latitude;
     public double longitude;
 
-    public Station (String title, double latitude, double longitude)
-    {
+    public Station(String title, double latitude, double longitude) {
         this.title = title;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -29,8 +27,7 @@ public class Station extends Model
     public List<Reading> readings = new ArrayList<Reading>();
 
 
-    public List<Reading> getReadings()
-    {
+    public List<Reading> getReadings() {
         return readings;
     }
 
@@ -38,39 +35,43 @@ public class Station extends Model
         if (readings.size() > 0) {
             return readings.get(readings.size() - 1);
         } else {
-            return new Reading(0,0,0,0,0,"none");
+            return new Reading(0, 0, 0, 0, 0, "none");
         }
     }
+
     private Reading secondlatestReading() {
         if (readings.size() > 2) {
             return readings.get(readings.size() - 2);
         } else {
-            return new Reading(0,0,0,0,0,"none");
+            return new Reading(0, 0, 0, 0, 0, "none");
         }
     }
+
     private Reading thirdlatestReading() {
         if (readings.size() > 2) {
             return readings.get(readings.size() - 3);
         } else {
-            return new Reading(0,0,0,0,0,"none");
+            return new Reading(0, 0, 0, 0, 0, "none");
         }
     }
-public String tempTrend() {
-    if (readings.size() > 2) {
-        if (latestReading().getReadingTemperature() > secondlatestReading().getReadingTemperature()) {
-            if (secondlatestReading().getReadingTemperature() > thirdlatestReading().getReadingTemperature()) {
-                return "Rising";
+
+    public String tempTrend() {
+        if (readings.size() > 2) {
+            if (latestReading().getReadingTemperature() > secondlatestReading().getReadingTemperature()) {
+                if (secondlatestReading().getReadingTemperature() > thirdlatestReading().getReadingTemperature()) {
+                    return "Rising";
+                }
+            } else if (latestReading().getReadingTemperature() < secondlatestReading().getReadingTemperature()) {
+                if (secondlatestReading().getReadingTemperature() < thirdlatestReading().getReadingTemperature()) {
+                    return "Falling";
+                }
             }
-        } else if (latestReading().getReadingTemperature() < secondlatestReading().getReadingTemperature()) {
-            if (secondlatestReading().getReadingTemperature() < thirdlatestReading().getReadingTemperature()) {
-                return "Falling";
-            }
-        }
-    } else if (readings.size() <= 2) {
+        } else if (readings.size() <= 2) {
             return " ";
+        }
+        return "Steady";
     }
-    return "Steady";
-}
+
     public String windTrend() {
         if (readings.size() > 2) {
             if (latestReading().getReadingWindSpeed() > secondlatestReading().getReadingWindSpeed()) {
@@ -87,6 +88,7 @@ public String tempTrend() {
         }
         return "Steady";
     }
+
     public String pressureTrend() {
         if (readings.size() > 2) {
             if (latestReading().getReadingPressure() > secondlatestReading().getReadingPressure()) {
@@ -103,17 +105,19 @@ public String tempTrend() {
         }
         return "Steady";
     }
-   public double minWindSpeed() {
-       if (readings.size() != 0) {
-           Reading minWindSpeed = readings.get(0);
-           for (Reading reading : readings) {
-               if (reading.getReadingWindSpeed() < minWindSpeed.getReadingWindSpeed())
-                   minWindSpeed = reading;
-           }
-           return minWindSpeed.getReadingWindSpeed();
-       } else
-           return 0.0;
-   }
+
+    public double minWindSpeed() {
+        if (readings.size() != 0) {
+            Reading minWindSpeed = readings.get(0);
+            for (Reading reading : readings) {
+                if (reading.getReadingWindSpeed() < minWindSpeed.getReadingWindSpeed())
+                    minWindSpeed = reading;
+            }
+            return minWindSpeed.getReadingWindSpeed();
+        } else
+            return 0.0;
+    }
+
     public double maxWindSpeed() {
         if (readings.size() != 0) {
             Reading maxWindSpeed = readings.get(0);
@@ -125,6 +129,7 @@ public String tempTrend() {
         } else
             return 0.0;
     }
+
     public double minPressure() {
         if (readings.size() != 0) {
             Reading minPressure = readings.get(0);
@@ -136,6 +141,7 @@ public String tempTrend() {
         } else
             return 0.0;
     }
+
     public double maxPressure() {
         if (readings.size() != 0) {
             Reading maxPressure = readings.get(0);
@@ -147,7 +153,8 @@ public String tempTrend() {
         } else
             return 0.0;
     }
-// user to get the title field of the Array List of stations to then
+
+    // user to get the title field of the Array List of stations to then
     // be passed into a method which sorted each station in that array list
     public static List<Station> sortStations(List<Station> station) {
         station.sort(Comparator.comparing(Station::getStationTitle));
@@ -159,43 +166,43 @@ public String tempTrend() {
 
     //getters
 
-    public String getStationTitle() { return title; }
-    public int latestCode()
-    {
+    public String getStationTitle() {
+        return title;
+    }
+
+    public int latestCode() {
         return latestReading().getReadingCode();
     }
 
-    public String latestWeatherCode()
-    {
+    public String latestWeatherCode() {
         return latestReading().getWeatherCode();
     }
-    public double latestTemperature()
-    {
+
+    public double latestTemperature() {
         return latestReading().getReadingTemperature();
     }
-    public double latestFahrenheit()
-    {
+
+    public double latestFahrenheit() {
         return latestReading().getReadingFahrenheit();
     }
 
-    public double latestWindSpeed()
-    {
+    public double latestWindSpeed() {
         return latestReading().getReadingWindSpeed();
     }
-    public int latestBeaufort()
-    {
+
+    public int latestBeaufort() {
         return latestReading().getBeaufort();
     }
-    public String latestWindDirectionCompass()
-    {
+
+    public String latestWindDirectionCompass() {
         return latestReading().getWindDirectionCompass();
     }
-    public double latestWindChill()
-    {
+
+    public double latestWindChill() {
         return latestReading().getWindChill();
     }
-    public int latestPressure()
-    {
+
+    public int latestPressure() {
         return latestReading().getReadingPressure();
     }
 

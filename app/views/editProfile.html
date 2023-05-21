@@ -3,48 +3,49 @@
 
 #{menu id:"editProfile"/}
 <style>
-  .content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
-    color: white;
-  }
-  .label {
-    color: white;
-    font-size: large;
-  }
+    .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+        color: white;
+    }
+
+    .label {
+        color: white;
+        font-size: large;
+    }
 </style>
 <section class="content box">
-  <div class="columns">
-    <div class="column is-half">
-      <form action="/editProfile" method="POST">
-        <h3 class="subtitle">Edit Profile</h3>
-        <div class="field is-horizontal field-body">
-          <div class="field">
-            <label class="label">New First Name</label>
-            <p class="control is-expanded">
-              <input class="input" type="text" placeholder="${member.getFirstname()}" name="newFirstname">
-            </p>
-          </div>
-          <div class="field">
-            <label class="label">New Last Name</label>
-            <p class="control">
-              <input class="input" type="text" placeholder="${member.getLastname()}" name="newLastname">
-            </p>
-          </div>
+    <div class="columns">
+        <div class="column is-half">
+            <form action="/editProfile" method="POST">
+                <h3 class="subtitle">Edit Profile</h3>
+                <div class="field is-horizontal field-body">
+                    <div class="field">
+                        <label class="label">New First Name</label>
+                        <p class="control is-expanded">
+                            <input class="input" type="text" placeholder="${member.getFirstname()}" name="newFirstname">
+                        </p>
+                    </div>
+                    <div class="field">
+                        <label class="label">New Last Name</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="${member.getLastname()}" name="newLastname">
+                        </p>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <h4>${member.getEmail()}</h4>
+                </div>
+                <div class="field">
+                    <label class="label">New Password</label>
+                    <input class="input" type="password" name="newPassword">
+                </div>
+                <button class="button is-link is-info">Submit</button>
+            </form>
         </div>
-        <div class="field">
-          <label class="label">Email</label>
-          <h4>${member.getEmail()}</h4>
+        <div class="column is-half">
+            <figure class="image is-square">
+                <img src="/public/images/watchTower.png">
+            </figure>
         </div>
-        <div class="field">
-          <label class="label">New Password</label>
-          <input class="input" type="password" name="newPassword">
-        </div>
-        <button class="button is-link is-info">Submit</button>
-      </form>
     </div>
-    <div class="column is-half">
-      <figure class="image is-square">
-        <img src="/public/images/watchTower.png">
-      </figure>
-    </div>
-  </div>
 </section>

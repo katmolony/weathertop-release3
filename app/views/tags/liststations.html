@@ -1,39 +1,39 @@
 <table class="table">
-  <thead>
-  <tr>
-    <th>Code</th>
-    <th>Temp</th>
-    <th>Wind Speed</th>
-    <th>Wind Direction</th>
-    <th>Pressure</th>
-  </tr>
-  </thead>
-  #{list items:_station.readings, as:'reading'}
-  <tbody>
-  <tr>
-    <td>
-      ${reading.dateTime}
-    </td>
-    <td>
-      ${reading.code}
-    </td>
-    <td>
-      ${reading.temperature}
-    </td>
-    <td>
-      ${reading.windSpeed}
-    </td>
-    <td>
-      ${reading.windDirection}
-    </td>
-    <td>
-      ${reading.pressure}
-    </td>
-    <td>
-      <a href="/stations/${_station.id}/deletereading/${reading.id}" class="button is-danger">Delete Reading</a>
-    </td>
-  </tr>
-  </tr>
-  #{/list}
-  </tbody>
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Wind Direction</th>
+        <th>Pressure</th>
+    </tr>
+    </thead>
+    #{list items:_station.readings, as:'reading'}
+    <tbody>
+    <tr>
+        <td>
+            ${reading.dateTime}
+        </td>
+        <td>
+            ${reading.code}
+        </td>
+        <td>
+            ${reading.temperature}
+        </td>
+        <td>
+            ${reading.windSpeed}
+        </td>
+        <td>
+            ${reading.windDirection}
+        </td>
+        <td>
+            ${reading.pressure}
+        </td>
+        <td>
+            <a href="/stations/${_station.id}/deletereading/${reading.id}" class="button is-danger">Delete Reading</a>
+        </td>
+    </tr>
+    </tr>
+    #{/list}
+    </tbody>
 </table>
