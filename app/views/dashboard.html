@@ -1,0 +1,56 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+<style>
+  .content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
+    color: white;
+  }
+</style>
+<section class="ui segment">
+
+</section>
+<div class="content box">
+  <header class="title">
+  ${member.firstname} ${member.lastname}'s Station List
+  </header>
+</div>
+</thead>
+#{list items:member.getSortedStations(), as:'station'}
+<div class="content box">
+  <h1 class="title">
+    ${station.title}
+  </h1>
+  <div class="content box">
+    <!--  #{latestreadings station:station /}-->
+    <!--try to make a partial for latest readings-->
+    <!--  #{latestreadings station:station /}-->
+    #{if station.readings.size() > 0}
+    #{latestreadings station:station /}
+    #{/if}
+    #{else}
+    <div class="container">
+      <a href="/stations/${station.id}">
+        <div class="tags has-addons is-centered my-5">
+          <span class="tag has-background-danger is-large is-uppercase has-text-weight-bold has-text-white m-0">Station: ${station.title}, Has no Readings Recorded</span>
+          <span class="tag is-info is-large has-text-weight-bold is-uppercase has-text-weight-bold  has-text-white m-0">Click to Add A Reading</span>
+        </div>
+      </a>
+    </div>
+    #{/else}
+  </div>
+  <div class="icon">
+    <td>
+    <a href="/stations/${station.id}" class="fas fa-folder-open"></a>
+    </td>
+  </div>
+  <div class="icon">
+    <td>
+      <a href="/dashboard/${member.id}/deleteStation/${station.id}" class="fas fa-trash" style="color: #ff0000;"></a>
+    </td>
+  </div>
+</div>
+#{/list}
+<div class="content box">
+  #{addstation /}
+</div>

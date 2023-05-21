@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{set title:'login' /}
+#{welcomemenu id:"login"/}
+
+<style>
+  .content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
+    color: white;
+  }
+  .label {
+    color: white;
+  }
+</style>
+
+<section class="content box has-text-centered">
+  <div class="columns">
+    <div class="column is-half">
+      <form action="/authenticate" method="POST">
+        <br></br>
+        <h1 class="subtitle">Log-in</h1>
+        <div class="field">
+          <label class="label">Email</label>
+          <input placeholder="Email" name="email">
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+          <input type="password" name="password">
+        </div>
+        <button class="button is-link is-info">Login</button>
+      </form>
+    </div>
+    <div class="column is-half">
+      <figure class="image is-square">
+        <img src="/public/images/watchTower.png">
+      </figure>
+    </div>
+  </div>
+</section>
