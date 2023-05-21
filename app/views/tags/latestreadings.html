@@ -1,0 +1,89 @@
+<style>
+  .label{
+    color: #F24C27;
+    font-size: large;
+  }
+  .box.has-background-black{
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+  }
+  .title {
+      color: white;
+  }
+</style>
+#{list items:_station, as:'_station'}
+<div class="container">
+  <div class="columns">
+
+    <div class="column is-one-fifth">
+      <box class="box has-background-black">
+            <label class="label">Station</label>
+          <span class="icon is-large">
+              <i class="fa-solid fas fa-2x fa-location-crosshairs"></i>
+          </span>
+          <br></br>
+            <p>${_station.title}</p>
+            <p>${_station.latitude}</p>
+            <p>${_station.longitude}</p>
+      </box>
+    </div>
+
+    <div class="column is-one-fifth">
+      <box class="box has-background-black">
+        <label class="label">Weather</label>
+          <span class="icon is-large">
+              <i class="fa-solid fas fa-2x fa-cloud-sun"></i>
+          </span>
+          <br></br>
+            <p>${_station.latestCode()}</p>
+            <p>${_station.latestWeatherCode()}</p>
+      </box>
+    </div>
+
+    <div class="column is-one-fifth">
+
+      <box class="box has-background-black">
+        <label class="label">Temperature</label>
+          <span class="icon is-large">
+              <i class="fa-solid fas fa-2x fa-temperature-three-quarters"></i>
+          </span>
+          <br></br>
+        <p>${_station.latestTemperature()} °C</p>
+        <p>${_station.latestFahrenheit()} °F</p>
+        <p>${_station.tempTrend()}</p>
+      </box>
+    </div>
+
+    <div class="column is-one-fifth">
+      <box class="box has-background-black">
+        <label class="label">Wind</label>
+          <span class="icon is-large">
+              <i class="fa-solid fas fa-2x fa-wind"></i>
+          </span>
+            <p>${_station.latestWindSpeed()}</p>
+            <p>${_station.latestBeaufort()} bft</p>
+            <p>Min: ${_station.minWindSpeed()}</p>
+            <p>Max: ${_station.maxWindSpeed()}</p>
+            <p>${_station.windTrend()}</p>
+      </box>
+    </div>
+
+    <div class="column is-one-fifth">
+      <box class="box has-background-black">
+        <label class="label">Pressure</label>
+          <span class="icon is-large">
+              <i class="fa-solid fas fa-2x fa-water"></i>
+          </span>
+            <p>${_station.latestPressure()} hpa</p>
+            <p>${_station.maxPressure()} hpa</p>
+            <p>${_station.minPressure()} hpa</p>
+            <p>${_station.pressureTrend()}</p>
+      </box>
+    </div>
+
+  </div>
+</div>
+#{/list}
