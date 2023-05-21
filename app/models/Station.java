@@ -106,6 +106,29 @@ public class Station extends Model {
         return "Steady";
     }
 
+    public double minTemp() {
+        if (readings.size() != 0) {
+            Reading minTemp = readings.get(0);
+            for (Reading reading : readings) {
+                if (reading.getReadingTemperature() < minTemp.getReadingTemperature())
+                    minTemp = reading;
+            }
+            return minTemp.getReadingTemperature();
+        } else
+            return 0.0;
+    }
+
+    public double maxTemp() {
+        if (readings.size() != 0) {
+            Reading maxTemp = readings.get(0);
+            for (Reading reading : readings) {
+                if (reading.getReadingTemperature() < maxTemp.getReadingTemperature())
+                    maxTemp = reading;
+            }
+            return maxTemp.getReadingTemperature();
+        } else
+            return 0.0;
+    }
     public double minWindSpeed() {
         if (readings.size() != 0) {
             Reading minWindSpeed = readings.get(0);
@@ -165,6 +188,8 @@ public class Station extends Model {
 
     //converts the inputted station title to be in sentence form
     //keeping the array in alphabetical order
+    // (i.e. lowercase letters would be sorted after capital leters)
+    //as they are sorted by the capital letter
     public static String convertToTitleCaseIteratingChars(String text) {
         if (text == null || text.isEmpty()) {
             return text;

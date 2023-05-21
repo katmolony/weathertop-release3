@@ -52,9 +52,10 @@
                 <span class="icon is-large">
               <i class="fa-solid fas fa-2x fa-temperature-three-quarters"></i>
           </span>
-                <br></br>
                 <p>${_station.latestTemperature()} °C</p>
                 <p>${_station.latestFahrenheit()} °F</p>
+                <p>Min: ${_station.minTemp()}</p>
+                <p>Max: ${_station.maxTemp()}</p>
                 <p>${_station.tempTrend()}</p>
             </box>
         </div>
@@ -80,8 +81,8 @@
               <i class="fa-solid fas fa-2x fa-water"></i>
           </span>
                 <p>${_station.latestPressure()} hpa</p>
-                <p>${_station.maxPressure()} hpa</p>
-                <p>${_station.minPressure()} hpa</p>
+                <p>Min:${_station.minPressure()} hpa</p>
+                <p>Max:${_station.maxPressure()} hpa</p>
                 <p>${_station.pressureTrend()}</p>
             </box>
         </div>
